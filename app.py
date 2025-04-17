@@ -3,8 +3,6 @@ import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
-import webbrowser
-from threading import Timer
 from dash import dash_table
 from PyQt5.QtCore import QLocale
 from excel_loader import run_excel_loader
@@ -249,11 +247,7 @@ def update_content(selected_sites, selected_item_details, selected_fiscal_years)
     data=df_grid_display.to_dict('records')
     return fig1, fig2, data
 
-# Function to open the browser after the server starts
-def open_browser():
-    webbrowser.open_new("http://127.0.0.1:8050/")
+server = app.server  # 👈 ADD THIS LINE at the global level for Render to find the server
 
-# Run the app with a browser open timer
 if __name__ == '__main__':
-    Timer(1, open_browser).start()
-    app.run_server(debug=False)
+    app.run_server(host='0.0.0.0', port=10000, debug=False)
