@@ -5,7 +5,6 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 from dash import dash_table
 from PyQt5.QtCore import QLocale
-from excel_loader import run_excel_loader
 
 QLocale.setDefault(QLocale(QLocale.English, QLocale.UnitedStates))
 
